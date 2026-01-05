@@ -1,6 +1,6 @@
 # Lunallena 🌕
 
-A theme for **Tidaluna** featuring elegant blur effects and UI tweaks and effects.
+A theme for **Tidaluna** featuring elegant blur, UI tweaks and effects.
 Designed to work with Sidebar 3.0.
 
 ![Preview](previews/1.png)
