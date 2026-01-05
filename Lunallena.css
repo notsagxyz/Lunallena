@@ -35,30 +35,29 @@
    ========================================================= */
 
 [class*="_bar_"] {
-    margin-bottom: -30px;
-    margin-left: var(--sidebarWidth);
-    background-color: var(--bg-transparent) !important;
-    position: relative;
+    margin-bottom: -35px;
+    margin-top: 5px;
+    margin-left: 13px;
+    background: transparent;
 }
 
-[class*="_title_"] span {
-    color: white !important;
+[class*="_controls_"] {
+margin-right: 15px;
 }
 
-div[class*="_controls_"] {
-    position: relative;
-    right: var(--sidebarWidth);
+div[class*="_title_"] {
+    display: none !important;
 }
 
-div[class*="_controls_"] button[class*="_button_"] {
+div[class*="_bar_"] button[class*="_button_"] {
     background: var(--bg-transparent);
 }
 
-div[class*="_controls_"] button[class*="_button_"] svg {
-    color: rgba(255, 255, 255, 0.5);
+div[class*="_bar_"] button[class*="_button_"] svg {
+    color: rgba(255, 255, 255, 0.3);
 }
 
-div[class*="_controls_"] button[class*="_button_"]:hover svg {
+div[class*="_bar_"] button[class*="_button_"]:hover svg {
     color: rgba(255, 255, 255, 1);
 }
 
@@ -286,7 +285,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
    ========================================================= */
 
 * {
-    scrollbar-width: none;
+    scrollbar-width: none !important;
 }
 
 .os-scrollbar {
@@ -305,11 +304,11 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 
 aside[aria-label="Navigation sidebar"] {
     min-height: 100vh;
-
+    margin-top: 20px;
 }
 
 aside[aria-label="Navigation sidebar"] div[class^="_scrollableContent_"] {
-    padding-bottom: calc(var(--miniPlayerHeight) + 25px);
+    padding-bottom: calc(var(--miniPlayerHeight) + 40px);
 }
 
 [class*="background"] {
@@ -344,7 +343,7 @@ aside[aria-label="Navigation sidebar"] div[class^="_scrollableContent_"] {
    ========================================================= */
 
 [class^="_smallHeader_"] {
-    width: 100%;
+    width: 100% !important;
     left: 0;
     background-color: var(--bg-glass-dark);
     backdrop-filter: var(--blur-playlist);
