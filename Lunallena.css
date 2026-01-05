@@ -39,16 +39,16 @@ div[class*="_controls_"] button[class*="_button_"]:hover svg {
 /* =========================================================
    HEADER
    ========================================================= */
-
-[class*="solidHeader"] {
-    padding-top: 40px !important;
+#mainHeader:not([data-test="header"]) {
     background-color: rgba(0, 0, 0, 0.4) !important;
+    margin-bottom: calc((var(--headerHeight)) *-1) !important;
     backdrop-filter: blur(15px) saturate(2) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 50px !important;
 }
 
-div[class*="_wrapper"][class*="solidHeader"] {
-    padding-top: 0 !important;
+div[class*="header"][class*="solidHeader"] {
+    padding-top: 0px !important;
     margin-top: -15px;
 }
 
@@ -64,10 +64,15 @@ div[class*="_wrapper"][class*="solidHeader"] {
    ========================================================= */
 
 [data-test="footer-player"] {
-    min-width: min-content;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 20px !important;
+    width: 95% !important;
+    left: 50% !important;
+    transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.5) !important;
     backdrop-filter: blur(15px) saturate(2) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     box-shadow: none !important;
 }
 
@@ -256,6 +261,10 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     scrollbar-width: none !important;
 }
 
+.os-scrollbar {
+    display: none !important;
+}
+
 .is-windows.is-desktop {
     min-height: 100vh !important;
     overflow: hidden !important;
@@ -270,20 +279,13 @@ aside[aria-label="Navigation sidebar"] {
 }
 
 aside[aria-label="Navigation sidebar"] div[class^="_scrollableContent_"] {
-    padding-bottom: calc(var(--miniPlayerHeight) + 10px) !important;
-}
-
-[class*="main"]:not([class*="image"]) {
-    margin-top: 0;
-    min-height: 100vh !important;
-    padding-bottom: calc(var(--miniPlayerHeight) + 10px) !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+    padding-bottom: calc(var(--miniPlayerHeight) + 25px) !important;
 }
 
 [class*="background"] {
-    overflow: visible !important;
-    clip-path: inset(-100% -100% 0 -100%);
+    margin-top: calc(var(--headerHeight) + 35px);
+    overflow: hidden !important;
+    height: auto;
 }
 
 [class*="_backgroundBlur_"] {
@@ -292,16 +294,19 @@ aside[aria-label="Navigation sidebar"] div[class^="_scrollableContent_"] {
 }
 
 .mainContent {
-    padding-top: calc(var(--headerHeight) + 40px);
+    padding-top: var(--headerHeight);
     padding-bottom: var(--miniPlayerHeight);
+}
+
+#main {
+    margin-top: 0px;
+    padding-top: 40px;
 }
 
 [class*="MuiContainer-root"] {
-    padding-top: calc(var(--headerHeight) + -45px0px);
+    padding-top: calc(var(--headerHeight) + 45px) !important;
     padding-bottom: var(--miniPlayerHeight);
 }
-
-
 
 /* =========================================================
    PLAYLIST
@@ -346,23 +351,16 @@ div[class^="_smallHeader_"]::before {
    SEARCH RESULTS
    ========================================================= */
 
-[class*="_resultsPageWrapper_"][data-test="search-results"] {
-    padding: auto !important;
-    padding-top: 80px !important;
-}
-
 div[data-test="search-results"] div[class*="_solidHeader_"] {
-    position: fixed !important;
+    position: absolute !important;
     right: 0;
     left: 0;
-    margin-top: 50px !important;
     background-color: rgba(0, 0, 0, 0.7) !important;
     box-shadow: none !important;
 }
 
 [class*="_resultsContainer_"],
 [class*="_mobilePageSearch_"] {
-    padding-top: 60px;
     padding-left: 36px !important;
     padding-right: 36px !important;
 }
