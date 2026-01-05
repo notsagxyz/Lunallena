@@ -160,7 +160,6 @@ button[data-test^="nowplaying-playqueue-"]:hover {
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 10px;
     box-shadow: none;
-    z-index: 0;
 }
 
 [class*="contextMenu"][role="menu"]::before {
@@ -170,12 +169,10 @@ button[data-test^="nowplaying-playqueue-"]:hover {
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px) saturate(2) !important;
     border-radius: inherit;
-    z-index: 0;
 }
 
 [class*="contextMenu"][role="menu"] > * {
     position: relative;
-    z-index: 1;
 }
 
 [class*="_subMenu_"] {
