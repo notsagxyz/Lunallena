@@ -112,7 +112,6 @@ div[class*="header"][class*="solidHeader"] {
 }
 
 [class*="_bottomGradient_"] {
-    background-color: var(--bg-transparent);
     background-image: none;
 }
 
@@ -318,8 +317,8 @@ aside[aria-label="Navigation sidebar"] div[class^="_scrollableContent_"] {
 }
 
 [class*="_backgroundBlur_"] {
-    padding: 0;
-    position: relative;
+    height: 250px !important;
+    opacity: 0.8;
 }
 
 .mainContent {
