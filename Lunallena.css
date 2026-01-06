@@ -92,7 +92,7 @@ div[class*="header"][class*="solidHeader"] {
     border-radius: 15px;
     position: fixed;
     bottom: 20px;
-    width: 90%;
+    width: 95%;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--bg-glass-light) !important;
