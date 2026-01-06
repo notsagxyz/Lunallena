@@ -38,7 +38,7 @@
     margin-bottom: -35px;
     margin-top: 5px;
     margin-left: 13px;
-    background: none;
+    background: transparent !important;
 }
 
 [class*="_controls_"] {
