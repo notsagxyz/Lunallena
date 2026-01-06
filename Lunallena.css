@@ -304,7 +304,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 
 aside[aria-label="Navigation sidebar"] {
     min-height: 100vh;
-    margin-top: 20px;
+    margin-top: 30px !important;
 }
 
 aside[aria-label="Navigation sidebar"] div[class^="_scrollableContent_"] {
@@ -386,7 +386,6 @@ div[class^="_smallHeader_"]::before {
     padding-top: 50px !important;
     background-color: var(--bg-search-results);
     backdrop-filter: var(--blur-glass);
-
 }
 
 [class*="_resultsContainer_"],
@@ -413,5 +412,5 @@ div[data-test="search-results"] div[class*="_solidHeader_"]::before {
    ========================================================= */
 
 [class*="creditsPage"] {
-    margin-top: var(--headerHeight);
+    margin-top: calc(var(--headerHeight) + 10px) !important;
 }
