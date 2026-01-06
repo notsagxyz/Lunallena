@@ -38,7 +38,7 @@
     margin-bottom: -35px;
     margin-top: 5px;
     margin-left: 13px;
-    background: transparent;
+    background: none;
 }
 
 [class*="_controls_"] {
@@ -65,7 +65,7 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
    HEADER
    ========================================================= */
 #mainHeader:not([data-test="header"]) {
-    background-color: var(--bg-glass-dark);
+    background-color: var(--bg-glass-dark) !important;
     margin-bottom: calc((var(--headerHeight)) *-1);
     backdrop-filter: var(--blur-glass);
     border-bottom: var(--border-glass);
@@ -311,10 +311,10 @@ aside[aria-label="Navigation sidebar"] div[class^="_scrollableContent_"] {
     padding-bottom: calc(var(--miniPlayerHeight) + 40px);
 }
 
-[class*="background"] {
+[data-test="artist-profile-header"] [class*="background"] {
     margin-top: calc(var(--headerHeight) + 35px);
     overflow: hidden;
-    height: auto;
+    height: 490px;
 }
 
 [class*="_backgroundBlur_"] {
@@ -344,8 +344,9 @@ aside[aria-label="Navigation sidebar"] div[class^="_scrollableContent_"] {
 
 [class^="_smallHeader_"] {
     width: 100% !important;
+    max-width: 100%;
     left: 0;
-    background-color: var(--bg-glass-dark);
+    background-color: var(--bg-glass-dark) !important;
     backdrop-filter: var(--blur-playlist);
     border-bottom: var(--border-glass);
 }
@@ -412,5 +413,5 @@ div[data-test="search-results"] div[class*="_solidHeader_"]::before {
    ========================================================= */
 
 [class*="creditsPage"] {
-    margin-top: var(h);
+    margin-top: var(--headerHeight);
 }
