@@ -22,8 +22,8 @@
     --bgeneral: rgb(16, 16, 16);
     
     /* Backdrop Filter */
-    --blur-glass: blur(30px) saturate(4);
-    --blur-now-playing: blur(50px) saturate(3);
+    --blur-glass: blur(30px) saturate(2);
+    --blur-now-playing: blur(50px) saturate(2);
     --blur-play-queue: blur(25px) saturate(2);
     
     /* Borders */
