@@ -10,6 +10,10 @@ Designed to work with Sidebar 3.0.
 
 ---
 
+https://github.com/user-attachments/assets/70801188-6560-4275-ae0a-af5ed157edd1
+
+---
+
 ## Installation Guide
 
 Follow these steps to get Lunallena up and running:
