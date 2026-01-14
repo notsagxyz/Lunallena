@@ -1,8 +1,11 @@
 # Lunallena 🌕
 
 "Full moon" Experience for Tidaluna.
-A theme designed to maximize screen real estate and deliver a true Full Screen experience. Inspired by the size of a "Full Moon," this theme combines glass-morphism with a clean UI layout. It features a comprehensive set of easily editable CSS variables, allowing you to fine-tune the aesthetics to match your personal style perfectly.
-Designed to work with Sidebar 3.0.
+ - Auto-hide sidebar & header (they pop up on hover).
+ - Quality of life improvements for a smoother workflow.
+ - CSS variables so you can customize it exactly how you like.
+ - Glassmorphism aesthetic for that clean, modern look.
+ - Designed to work with Sidebar 3.0.
 
 ![Preview](previews/1.png)
 ![Preview](previews/2.png)
