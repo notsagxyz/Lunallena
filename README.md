@@ -1,6 +1,7 @@
 # Lunallena 🌕
 
-A theme for **Tidaluna** featuring elegant blur, UI tweaks and effects.
+"Full moon" Experience for Tidaluna.
+A theme designed to maximize screen real estate and deliver a true Full Screen experience. Inspired by the size of a "Full Moon," this theme combines glass-morphism with a clean UI layout. It features a comprehensive set of easily editable CSS variables, allowing you to fine-tune the aesthetics to match your personal style perfectly.
 Designed to work with Sidebar 3.0.
 
 ![Preview](previews/1.png)
