@@ -10,7 +10,7 @@
 :root {
     /* Background Colors */
     --bg-transparent: transparent;
-    --bg-solid: rgb(25, 25, 25);
+    --bg-solid: rgb(0, 0, 0);
     --bgeneral: rgb(0, 0, 0);
     --bg-glass-light: rgba(20, 20, 20, 0.3);
     --bg-glass-dark: rgba(50, 50, 50, 0.3);
@@ -226,14 +226,17 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
 }
 
 [class^="_smallHeader_"] {
-    min-width: 100vh !important;
     left: 0;
-    padding-left: calc(var(--sidebarWidth) + 50px) !important;
-    padding-right: calc(var(--sidebarWidth) + 5%) !important;
+    right: 0;
+    position: fixed !important;
+    padding-left: 120px !important;
+    padding-right: 300px !important;
+    padding-bottom: 20px !important;
+    width: 100vw;
     background-color: var(--bg-glass-light) !important;
     backdrop-filter: var(--blur-glass);
     border-bottom: var(--border-glass);
-    margin-top: 0px;
+    margin-top: -50px;
 }
 
 div[class^="_smallHeader_"]::before {
