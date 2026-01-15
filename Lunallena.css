@@ -81,7 +81,7 @@ h1 {
 }
 
 [data-wave-color=textSecondary] {
-    color: (var(--accent));
+    color: var(--accent);
 }
 
 [class="quality-tag"] {

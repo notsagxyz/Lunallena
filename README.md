@@ -25,6 +25,7 @@ The fastest and safest way to use **Lunallena** in your web browser (Chrome, Fir
 2.  **Create New Style:** Click the Stylus icon in your browser toolbar and select **"Write style for: tidal.com/..."**.
 3.  **Apply Code:** Copy the content of [**Lunallena_Stylus.css**](https://github.com/Acercandr0/Lunallena/blob/main/Lunallena_Stylus.css) and paste it into the Stylus editor.
 4.  **Save:** Give it a name (e.g., "Lunallena") and click **Save**. You're done!
+5.  **Optional Updates:** add ´https://raw.githubusercontent.com/Acercandr0/Lunallena/refs/heads/main/Lunallena_Stylus.css´ to check updates.
 
 ---
 
