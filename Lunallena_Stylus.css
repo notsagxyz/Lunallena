@@ -469,6 +469,7 @@ div:has(> [class*="imageryContainer"]) {
 
 [class*="_currentMediaItemDetails_"] {
     margin-left: 80px;
+    max-width: 270px;
 }
 
 /* =========================================================
