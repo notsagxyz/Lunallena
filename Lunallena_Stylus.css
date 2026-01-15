@@ -1,7 +1,13 @@
- /* =========================================================
-   LUNALLENA 3.0 🌕 by Acercandr0
-   Full Screen Theme for Tidal
-   ========================================================= */
+/* ==UserStyle==
+@name         Lunallena 🌕
+@version      3.2
+@namespace    https://github.com/Acercandr0
+@description  Tidal theme with full screen experience.
+@author       Acercandr0
+@license      No License
+==/UserStyle== */
+
+@-moz-document url("https://tidal.com/") {
 
 /* =========================================================
    VARIABLES
@@ -688,4 +694,6 @@ button[data-test^="nowplaying-playqueue-"]:hover {
 
 .os-scrollbar {
     display: none;
+}
+
 }
