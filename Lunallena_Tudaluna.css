@@ -1,14 +1,7 @@
-/* ==UserStyle==
-@name         Lunallena 🌕
-@version      3.265
-@namespace    https://github.com/Acercandr0
-@description  Tidal theme with full screen experience.
-@updateURL    https://raw.githubusercontent.com/Acercandr0/Lunallena/main/Lunallena_Stylus.css
-@author       Acercandr0
-@license      No License
-==/UserStyle== */
-
-@-moz-document url-prefix("https://tidal.com/"), url-prefix("https://listen.tidal.com/") {
+ /* =========================================================
+   LUNALLENA 3.0 🌕 by Acercandr0
+   Theme for Full Screen experience with Tidaluna
+   ========================================================= */
 
 /* =========================================================
    VARIABLES
@@ -105,25 +98,51 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
 
 .is-windows.is-desktop {
     min-height: 100vh;
+    margin-top: -30px;
 }
 
 #main {
     background-color: var(--bgeneral);
-    min-height: 100vh;
-    margin-top: 0;
-    margin-left: calc(var(--sidebarWidth) *-1.5);
-    padding-left: 0;
+    height: 100%;
+    margin-top: 0px;
+    margin-left: calc(var(--sidebarWidth) * -2);
+    padding-left: var(--sidebarWidth);
     min-width: 100vh;
 }
 
 .mainContent {
-    padding-bottom: var(--miniPlayerHeight);
+    padding-bottom: calc(var(--miniPlayerHeight) + 140px);
     margin-top: 40px;
-    margin-left: 20px;
 }
 
 [class*="MuiContainer"] {
     padding-bottom: calc(var(--miniPlayerHeight));
+}
+
+/* =========================================================
+   WINDOW & TITLE BAR
+   ========================================================= */
+
+[class*="_bar_"] {
+    background: var(--bg-glass-darker) !important;
+    backdrop-filter: var(--blur-glass);
+    border-bottom: var(--border-glass);
+}
+
+div[class^="_bar_"] > div[class^="_title_"] * {
+    color: white !important;
+}
+
+div[class*="_bar_"] button[class*="_button_"] {
+    background: transparent;
+}
+
+div[class*="_bar_"] button[class*="_button_"] svg {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+div[class*="_bar_"] button[class*="_button_"]:hover svg {
+    color: rgba(255, 255, 255, 1);
 }
 
 /* =========================================================
@@ -134,12 +153,11 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
     right: 2%;
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    margin-top: -58px;
+    margin-top: -52px;
     width: 450px;
     border: var(--border-glass);
-    border-top: none;
     border-radius: 0 0 20px 20px;
-    padding-top: 17px;
+    padding-top: 45px;
     padding-left: 20px;
     padding-right: 20px;
     transition: margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -215,6 +233,16 @@ div[class^="_smallHeader_"]::before {
     margin-top: -40px;
 }
 
+div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
+    background-color: var(--bg-glass-light);
+    backdrop-filter: var(--blur-glass);
+    border-bottom: var(--border-glass);
+    left: 0;
+    padding-left: 120px;
+    padding-right: 5%;
+    height: 140px;
+}
+
 /* ALBUM HEADER */
 [class*="dataContainer"]::before {
     height: 100% !important;
@@ -229,15 +257,15 @@ div[class^="_smallHeader_"]::before {
 }
 
 [class*="_sidebarWrapper_"] {
-    border-left: none !important;
+    border-left: none;
     border-radius: 0 20px 20px 0;
     border: var(--border-glass);
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    height: 86%;
-    top: 6%;
+    height: 75%;
+    top: 6.5%;
     overflow: visible;
-    left: calc(var(--sidebarWidth) * -1 + 15px );
+    left: calc(var(--sidebarWidth) * -1 + 20px );
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -275,6 +303,8 @@ div[class^="_smallHeader_"]::before {
     pointer-events: none;
 }
 
+
+
 /* FOCUS HOVER */
 [aria-label="Playlists"] [class*="_contentItem_"] {
     transition: filter 0.4s ease-in-out, transform 0.3s ease;
@@ -306,6 +336,7 @@ div[class*="_divider_"] {
 }
 
 [data-test="shortcut-list"] {
+    margin-top: 60px;
     row-gap: 10px;
 }
 
@@ -405,10 +436,11 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 
 [class*="headerContainer"] [class*="background"] {
     padding-left: 72px;
+    margin-top: 20px;
 }
 
 [data-test="artist-profile"] {
-    margin-top: 40px;
+    margin-top: 55px;
 }
 
 [class*="_dataContainer_"] > div > div:nth-child(3) {
@@ -652,5 +684,4 @@ button[data-test^="nowplaying-playqueue-"]:hover {
 
 .os-scrollbar {
     display: none;
-}
 }
