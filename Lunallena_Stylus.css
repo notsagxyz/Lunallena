@@ -7,7 +7,7 @@
 @license      No License
 ==/UserStyle== */
 
-@-moz-document url("https://tidal.com/") {
+@-moz-document url-prefix("https://tidal.com/"), url-prefix("https://listen.tidal.com/") {
 
 /* =========================================================
    VARIABLES
@@ -104,15 +104,14 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
 
 .is-windows.is-desktop {
     min-height: 100vh;
-    margin-top: -30px;
 }
 
 #main {
     background-color: var(--bgeneral);
     min-height: 100vh;
-    margin-top: 0px;
-    margin-left: calc(var(--sidebarWidth) * -2);
-    padding-left: var(--sidebarWidth);
+    margin-top: 0;
+    margin-left: calc(var(--sidebarWidth) *-1.5);
+    padding-left: 0;
     min-width: 100vh;
 }
 
@@ -123,32 +122,6 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
 
 [class*="MuiContainer"] {
     padding-bottom: calc(var(--miniPlayerHeight));
-}
-
-/* =========================================================
-   WINDOW & TITLE BAR
-   ========================================================= */
-
-[class*="_bar_"] {
-    background: var(--bg-glass-darker) !important;
-    backdrop-filter: var(--blur-glass);
-    border-bottom: var(--border-glass);
-}
-
-div[class^="_bar_"] > div[class^="_title_"] * {
-    color: white !important;
-}
-
-div[class*="_bar_"] button[class*="_button_"] {
-    background: transparent;
-}
-
-div[class*="_bar_"] button[class*="_button_"] svg {
-    color: rgba(255, 255, 255, 0.3);
-}
-
-div[class*="_bar_"] button[class*="_button_"]:hover svg {
-    color: rgba(255, 255, 255, 1);
 }
 
 /* =========================================================
@@ -314,8 +287,6 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     pointer-events: none;
 }
 
-
-
 /* FOCUS HOVER */
 [aria-label="Playlists"] [class*="_contentItem_"] {
     transition: filter 0.4s ease-in-out, transform 0.3s ease;
@@ -347,7 +318,6 @@ div[class*="_divider_"] {
 }
 
 [data-test="shortcut-list"] {
-    margin-top: 60px;
     row-gap: 10px;
 }
 
@@ -695,5 +665,4 @@ button[data-test^="nowplaying-playqueue-"]:hover {
 .os-scrollbar {
     display: none;
 }
-
 }
