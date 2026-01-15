@@ -19,13 +19,14 @@ A minimalist, immersive, and elegant interface.
 
 The fastest and safest way to use **Lunallena** in your web browser (Chrome, Firefox, Edge, Opera).
 
-1.  **Install Stylus:** If you don't have it yet, download the extension:
+1. **Install Stylus:** If you don't have it yet, download the extension:
     * [**Stylus for Chrome/Edge**](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
     * [**Stylus for Firefox**](https://addons.mozilla.org/en-US/firefox/addon/styl-us/)
-2.  **Create New Style:** Click the Stylus icon in your browser toolbar and select **"Write style for: tidal.com/..."**.
-3.  **Apply Code:** Copy the content of [**Lunallena_Stylus.css**](https://github.com/Acercandr0/Lunallena/blob/main/Lunallena_Stylus.css) and paste it into the Stylus editor.
-4.  **Save:** Give it a name (e.g., "Lunallena") and click **Save**. You're done!
-5.  **Optional Updates:** add ´https://raw.githubusercontent.com/Acercandr0/Lunallena/refs/heads/main/Lunallena_Stylus.css´ to check updates.
+2. **Install Lunallena:** Visit the official theme page:
+    * [**Lunallena on UserStyles.world**](https://userstyles.world/style/26078/lunallena)
+3. **One-Click Setup:** Click the **"Install"** button. Stylus will open a confirm page.
+4. **Confirm:** Click **"Install Style"** on the left. You're done!
+5. **Auto-Updates:** By installing this way, updates are **fully automatic**. Stylus will check for new versions and keep your theme up to date.
 
 ---
 
