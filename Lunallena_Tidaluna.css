@@ -111,12 +111,12 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
 }
 
 .mainContent {
-    padding-bottom: calc(var(--miniPlayerHeight) + 140px);
+    padding-bottom: var(--miniPlayerHeight);
     margin-top: 40px;
 }
 
 [class*="MuiContainer"] {
-    padding-bottom: calc(var(--miniPlayerHeight));
+    padding-bottom: var(--miniPlayerHeight);
 }
 
 /* =========================================================
@@ -336,7 +336,6 @@ div[class*="_divider_"] {
 }
 
 [data-test="shortcut-list"] {
-    margin-top: 60px;
     row-gap: 10px;
 }
 
