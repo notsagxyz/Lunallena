@@ -220,7 +220,7 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
 }
 
 [class^="_smallHeader_"] {
-    background: none;
+    background: none !important;
     margin-top: -40px;
 }
 
