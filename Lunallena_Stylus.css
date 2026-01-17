@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Lunallena 🌕
-@version      3.27
+@version      3.3
 @namespace    https://github.com/Acercandr0
 @description  Tidal theme with full screen experience.
 @updateURL    https://raw.githubusercontent.com/Acercandr0/Lunallena/main/Lunallena_Stylus.css
@@ -35,24 +35,35 @@
     --hover-inactive: grayscale(0%) opacity(50%);
     --hover-active: grayscale(0%) opacity(100%);
 
-    /* YOUR ACCENT COLOR */
-    --accent: rgb(112, 255, 196);
-    /* MAX QUALITY COLOR */
+    /* Accent Colors */
+    --accent: rgb(112, 255, 181);
     --wave-color-solid-rainbow-yellow-fill: rgb(242, 255, 145);
-    /* HIGH QUALITY COLOR */
     --wave-color-solid-accent-fill: rgb(65, 255, 192);
 }
 
-    /* Font Override */
-    [class="wave-text-body-demi"] {
+/* =========================================================
+   GENERAL OVERRIDES
+   ========================================================= */
+
+/* Font Override */
+[class="wave-text-body-demi"] {
     font-size: 14px;
 }
 
-    /* Tidal Tags */
-    [class="format-info"] {
+/* Tidal Tags */
+[class="format-info"] {
     font-size: 11px !important;
     max-width: 50px;
     background: var(--bg-glass-light);
+}
+
+/* Scrollbars */
+* {
+    scrollbar-width: none !important;
+}
+
+.os-scrollbar {
+    display: none;
 }
 
 /* =========================================================
@@ -65,7 +76,7 @@
 }
 
 [class*="heading"] {
-        color: var(--accent);
+    color: var(--accent);
 }
 
 h1 {
@@ -100,9 +111,10 @@ h1 {
 }
 
 /* =========================================================
-   WINDOW MAXED SPACE
+   LAYOUT & SPACING
    ========================================================= */
 
+/* Window Maxed Space */
 div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="hasPlayer"] {
     max-height: 100vh !important;
 }
@@ -115,7 +127,7 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
     background-color: var(--bgeneral);
     min-height: 100vh;
     margin-top: 0;
-    margin-left: calc(var(--sidebarWidth) *-1.5);
+    margin-left: calc(var(--sidebarWidth) * -1.5);
     padding-left: 0;
     min-width: 100vh;
 }
@@ -134,6 +146,7 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
    HEADERS
    ========================================================= */
 
+/* Main Header */
 #mainHeader {
     right: 2%;
     background-color: var(--bg-glass-light);
@@ -166,12 +179,14 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
     pointer-events: auto;
 }
 
+/* Search Field */
 [data-type="search-field"] {
     background-color: transparent;
     border: var(--border-glass);
     box-shadow: none;
 }
 
+/* Navigation Arrows */
 [data-test="navigation-arrows"] {
     display: flex;
     gap: 8px;
@@ -198,13 +213,13 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
 
 [data-test="navigation-arrows"] button:hover:not(:disabled) {
     background-color: rgba(0, 0, 0, 0.3) !important;
-
 }
 
 [data-test="navigation-arrows"] button:disabled {
     background-color: transparent;
 }
 
+/* Small Header */
 [class^="_smallHeader_"] {
     background: none;
     margin-top: -40px;
@@ -219,7 +234,7 @@ div[class^="_smallHeader_"]::before {
     margin-top: -40px;
 }
 
-/* ALBUM HEADER */
+/* Album Header */
 [class*="dataContainer"]::before {
     height: 100% !important;
 }
@@ -241,7 +256,7 @@ div[class^="_smallHeader_"]::before {
     height: 86%;
     top: 6%;
     overflow: visible;
-    left: calc(var(--sidebarWidth) * -1 + 15px );
+    left: calc(var(--sidebarWidth) * -1 + 15px);
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -264,6 +279,7 @@ div[class^="_smallHeader_"]::before {
     background-color: transparent;
 }
 
+/* Playlists Section */
 [aria-label="Playlists"][data-test="sidebar-scrollable-nav"] {
     transform: none; 
     clip-path: inset(0);
@@ -279,7 +295,7 @@ div[class^="_smallHeader_"]::before {
     pointer-events: none;
 }
 
-/* FOCUS HOVER */
+/* Focus Hover Effect */
 [aria-label="Playlists"] [class*="_contentItem_"] {
     transition: filter 0.4s ease-in-out, transform 0.3s ease;
 }
@@ -309,6 +325,7 @@ div[class*="_divider_"] {
     height: 0;
 }
 
+/* Shortcuts */
 [data-test="shortcut-list"] {
     row-gap: 10px;
 }
@@ -339,7 +356,7 @@ div[class*="_container_"][class*="_overlay_"]::before {
 }
 
 /* =========================================================
-   HOME CARDS
+   CARDS
    ========================================================= */
 
 [class*="cardContainer"] {
@@ -384,7 +401,7 @@ div[data-test="search-results"] > div[class*="container"]::before {
     backdrop-filter: var(--blur-glass);
     transform: translateY(-70px);
     padding-top: 70px;
-    margin-left:-5%;
+    margin-left: -5%;
     margin-right: -5%;
     padding-left: 5%;
     margin-bottom: -60px;
@@ -418,8 +435,8 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 [class*="_dataContainer_"] > div > div:nth-child(3) {
     border-radius: 10px;
     margin-left: -15px;
-	padding: 15px;
-    width: 75%;
+    padding: 15px;
+    max-width: 75%;
     margin-bottom: 10px;
     border: var(--border-glass);
     backdrop-filter: blur(7px);
@@ -452,6 +469,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     overflow: visible !important;
 }
 
+/* Album Art Animation */
 @keyframes spin-lp {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -506,6 +524,7 @@ div:has(> [class*="imageryContainer"]) {
     display: none;
 }
 
+/* Control Buttons */
 button[data-test="close-now-playing"],
 button[data-test="request-fullscreen"] {
     background-color: transparent;
@@ -523,8 +542,8 @@ button[data-test="request-fullscreen"]:hover {
 }
     
 [class*="divider"] {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 /* =========================================================
    PLAY QUEUE
@@ -540,6 +559,7 @@ button[data-test="request-fullscreen"]:hover {
     top: 50px;
 }
 
+/* Play Queue Positioning */
 div[class*="_playQueueWithHeader_"] {
     gap: 5px;
     top: 1.5%;
@@ -553,6 +573,7 @@ div[class*="_playQueueWithoutHeader_"] {
     z-index: 999;
 }
 
+/* Play Queue Buttons */
 button[data-test^="playqueue-"],
 button[data-test^="nowplaying-playqueue-"] {
     scale: 0.9;
@@ -571,6 +592,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
    MENUS & TOOLTIPS
    ========================================================= */
 
+/* Context Menu */
 [class*="contextMenu"][role="menu"] {
     position: relative;
     background-color: transparent;
@@ -591,6 +613,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
     position: relative;
 }
 
+/* Submenus */
 [class*="_subMenu_"] {
     position: relative;
     background-color: transparent;
@@ -627,6 +650,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
     z-index: 2;
 }
 
+/* Tooltips */
 [class*="_marketTooltipContainer_"] {
     background-color: var(--bg-glass-dark);
     backdrop-filter: var(--blur-glass);
@@ -651,15 +675,4 @@ button[data-test^="nowplaying-playqueue-"]:hover {
     display: none;
 }
 
-/* =========================================================
-   SCROLLBARS
-   ========================================================= */
-
-* {
-    scrollbar-width: none !important;
-}
-
-.os-scrollbar {
-    display: none;
-}
 }

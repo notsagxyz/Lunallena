@@ -1,4 +1,4 @@
- /* =========================================================
+/* =========================================================
    LUNALLENA 3.27 🌕 by Acercandr0
    Theme for Full Screen experience with Tidaluna
    ========================================================= */
@@ -28,24 +28,35 @@
     --hover-inactive: grayscale(0%) opacity(50%);
     --hover-active: grayscale(0%) opacity(100%);
 
-    /* YOUR ACCENT COLOR */
+    /* Accent Colors */
     --accent: rgb(112, 255, 196);
-    /* MAX QUALITY COLOR */
     --wave-color-solid-rainbow-yellow-fill: rgb(242, 255, 145);
-    /* HIGH QUALITY COLOR */
     --wave-color-solid-accent-fill: rgb(65, 255, 192);
 }
 
-    /* Font Override */
-    [class="wave-text-body-demi"] {
+/* =========================================================
+   GENERAL OVERRIDES
+   ========================================================= */
+
+/* Font Override */
+[class="wave-text-body-demi"] {
     font-size: 14px;
 }
 
-    /* Tidal Tags */
-    [class="format-info"] {
+/* Tidal Tags */
+[class="format-info"] {
     font-size: 11px !important;
     max-width: 50px;
     background: var(--bg-glass-light);
+}
+
+/* Scrollbars */
+* {
+    scrollbar-width: none !important;
+}
+
+.os-scrollbar {
+    display: none;
 }
 
 /* =========================================================
@@ -58,7 +69,7 @@
 }
 
 [class*="heading"] {
-        color: var(--accent);
+    color: var(--accent);
 }
 
 h1 {
@@ -93,9 +104,10 @@ h1 {
 }
 
 /* =========================================================
-   WINDOW MAXED SPACE
+   LAYOUT & SPACING
    ========================================================= */
 
+/* Window Maxed Space */
 div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="hasPlayer"] {
     max-height: 100vh !important;
 }
@@ -107,7 +119,7 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
 
 #main {
     background-color: var(--bgeneral);
-    height: 100%;
+    min-height: 100vh;
     margin-top: 0px;
     margin-left: calc(var(--sidebarWidth) * -2);
     padding-left: var(--sidebarWidth);
@@ -153,6 +165,7 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
    HEADERS
    ========================================================= */
 
+/* Main Header */
 #mainHeader {
     right: 2%;
     background-color: var(--bg-glass-light);
@@ -184,12 +197,14 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
     pointer-events: auto;
 }
 
+/* Search Field */
 [data-type="search-field"] {
     background-color: transparent;
     border: var(--border-glass);
     box-shadow: none;
 }
 
+/* Navigation Arrows */
 [data-test="navigation-arrows"] {
     display: flex;
     gap: 8px;
@@ -216,13 +231,13 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
 
 [data-test="navigation-arrows"] button:hover:not(:disabled) {
     background-color: rgba(0, 0, 0, 0.3) !important;
-
 }
 
 [data-test="navigation-arrows"] button:disabled {
     background-color: transparent;
 }
 
+/* Small Header */
 [class^="_smallHeader_"] {
     background: none !important;
     margin-top: -40px;
@@ -237,6 +252,7 @@ div[class^="_smallHeader_"]::before {
     margin-top: -40px;
 }
 
+/* Contributor Header */
 div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
@@ -247,7 +263,7 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     height: 140px;
 }
 
-/* ALBUM HEADER */
+/* Album Header */
 [class*="dataContainer"]::before {
     height: 100% !important;
 }
@@ -261,7 +277,7 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
 }
 
 [class*="_sidebarWrapper_"] {
-    border-left: none;
+    border-left: none !important;
     border-radius: 0 20px 20px 0;
     border: var(--border-glass);
     background-color: var(--bg-glass-light);
@@ -269,7 +285,7 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     height: 75%;
     top: 6.5%;
     overflow: visible;
-    left: calc(var(--sidebarWidth) * -1 + 20px );
+    left: calc(var(--sidebarWidth) * -1 + 20px);
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -292,6 +308,7 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     background-color: transparent;
 }
 
+/* Playlists Section */
 [aria-label="Playlists"][data-test="sidebar-scrollable-nav"] {
     transform: none; 
     clip-path: inset(0);
@@ -307,9 +324,7 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     pointer-events: none;
 }
 
-
-
-/* FOCUS HOVER */
+/* Focus Hover Effect */
 [aria-label="Playlists"] [class*="_contentItem_"] {
     transition: filter 0.4s ease-in-out, transform 0.3s ease;
 }
@@ -339,6 +354,7 @@ div[class*="_divider_"] {
     height: 0;
 }
 
+/* Shortcuts */
 [data-test="shortcut-list"] {
     row-gap: 10px;
 }
@@ -369,7 +385,7 @@ div[class*="_container_"][class*="_overlay_"]::before {
 }
 
 /* =========================================================
-   HOME CARDS
+   CARDS
    ========================================================= */
 
 [class*="cardContainer"] {
@@ -414,7 +430,7 @@ div[data-test="search-results"] > div[class*="container"]::before {
     backdrop-filter: var(--blur-glass);
     transform: translateY(-70px);
     padding-top: 70px;
-    margin-left:-5%;
+    margin-left: -5%;
     margin-right: -5%;
     padding-left: 5%;
     margin-bottom: -60px;
@@ -449,7 +465,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 [class*="_dataContainer_"] > div > div:nth-child(3) {
     border-radius: 10px;
     margin-left: -15px;
-	padding: 15px;
+    padding: 15px;
     width: 75%;
     margin-bottom: 10px;
     border: var(--border-glass);
@@ -483,6 +499,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     overflow: visible !important;
 }
 
+/* Album Art Animation */
 @keyframes spin-lp {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -537,6 +554,7 @@ div:has(> [class*="imageryContainer"]) {
     display: none;
 }
 
+/* Control Buttons */
 button[data-test="close-now-playing"],
 button[data-test="request-fullscreen"] {
     background-color: transparent;
@@ -554,9 +572,8 @@ button[data-test="request-fullscreen"]:hover {
 }
 
 [class*="divider"] {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 /* =========================================================
    PLAY QUEUE
@@ -572,6 +589,7 @@ button[data-test="request-fullscreen"]:hover {
     top: 50px;
 }
 
+/* Play Queue Positioning */
 div[class*="_playQueueWithHeader_"] {
     gap: 5px;
     top: 1.5%;
@@ -585,6 +603,7 @@ div[class*="_playQueueWithoutHeader_"] {
     z-index: 999;
 }
 
+/* Play Queue Buttons */
 button[data-test^="playqueue-"],
 button[data-test^="nowplaying-playqueue-"] {
     scale: 0.9;
@@ -603,6 +622,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
    MENUS & TOOLTIPS
    ========================================================= */
 
+/* Context Menu */
 [class*="contextMenu"][role="menu"] {
     position: relative;
     background-color: transparent;
@@ -623,6 +643,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
     position: relative;
 }
 
+/* Submenus */
 [class*="_subMenu_"] {
     position: relative;
     background-color: transparent;
@@ -659,6 +680,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
     z-index: 2;
 }
 
+/* Tooltips */
 [class*="_marketTooltipContainer_"] {
     background-color: var(--bg-glass-dark);
     backdrop-filter: var(--blur-glass);
@@ -680,17 +702,5 @@ button[data-test^="nowplaying-playqueue-"]:hover {
 
 [class*="_tooltipText_"]::after,
 [class*="_sidebarTooltip_"]::after {
-    display: none;
-}
-
-/* =========================================================
-   SCROLLBARS
-   ========================================================= */
-
-* {
-    scrollbar-width: none !important;
-}
-
-.os-scrollbar {
     display: none;
 }
