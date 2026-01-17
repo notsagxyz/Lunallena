@@ -1,5 +1,5 @@
  /* =========================================================
-   LUNALLENA 3.0 🌕 by Acercandr0
+   LUNALLENA 3.27 🌕 by Acercandr0
    Theme for Full Screen experience with Tidaluna
    ========================================================= */
 
@@ -86,6 +86,10 @@ h1 {
 
 [class="quality-tag"] {
     color: var(--wave-color-solid-rainbow-yellow-fill) !important;
+}
+
+[data-wave-color="textTertiary"] {
+    color: var(--accent);
 }
 
 /* =========================================================
@@ -548,6 +552,11 @@ button[data-test="request-fullscreen"]:hover {
 [class*="artistBio"] {
     padding-bottom: 80px;
 }
+
+[class*="divider"] {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
 
 /* =========================================================
    PLAY QUEUE

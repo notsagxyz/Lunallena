@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Lunallena 🌕
-@version      3.265
+@version      3.27
 @namespace    https://github.com/Acercandr0
 @description  Tidal theme with full screen experience.
 @updateURL    https://raw.githubusercontent.com/Acercandr0/Lunallena/main/Lunallena_Stylus.css
@@ -93,6 +93,10 @@ h1 {
 
 [class="quality-tag"] {
     color: var(--wave-color-solid-rainbow-yellow-fill) !important;
+}
+    
+[data-wave-color="textTertiary"] {
+    color: var(--accent);
 }
 
 /* =========================================================
@@ -454,17 +458,17 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 }
 
 [class*="imageryContainer"] {
-    border-radius: 100VH !important;
+    border-radius: 100VH;
     position: absolute;
     scale: 1.15;
-    animation: spin-lp 20s linear infinite !important;
+    animation: spin-lp 20s linear infinite;
     z-index: 2;
     outline: var(--border-glass);
 }
 
 div:has(> [class*="imageryContainer"]) {
-    position: relative !important;
-    overflow: visible !important;
+    position: relative;
+    overflow: visible;
 }
 
 [class*="_currentMediaItemDetails_"] {
@@ -517,6 +521,10 @@ button[data-test="request-fullscreen"]:hover {
 [class*="artistBio"] {
     padding-bottom: 80px;
 }
+    
+[class*="divider"] {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 
 /* =========================================================
    PLAY QUEUE
