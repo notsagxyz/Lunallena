@@ -253,8 +253,8 @@ div[class^="_smallHeader_"]::before {
     border: var(--border-glass);
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    height: 86%;
-    top: 6%;
+    height: 85%;
+    margin-top: 7vh;
     overflow: visible;
     left: calc(var(--sidebarWidth) * -1 + 15px);
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -469,6 +469,18 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     overflow: visible !important;
 }
 
+[class*='_knob_'] {
+    margin-left: -6px;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    box-shadow: none;;
+}
+
+button[aria-label="Play queue"] {
+    height: 32px;
+}
+
 /* Album Art Animation */
 @keyframes spin-lp {
     from { transform: rotate(0deg); }
@@ -545,6 +557,9 @@ button[data-test="request-fullscreen"]:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+figure[data-test="now-playing-image"] {
+    box-shadow: none;
+}
 /* =========================================================
    PLAY QUEUE
    ========================================================= */
@@ -562,8 +577,7 @@ button[data-test="request-fullscreen"]:hover {
 /* Play Queue Positioning */
 div[class*="_playQueueWithHeader_"] {
     gap: 5px;
-    top: 1.5%;
-    right: 1.5%;
+    top: 15px;
 }
 
 div[class*="_playQueueWithoutHeader_"] {
@@ -586,6 +600,11 @@ button[data-test^="nowplaying-playqueue-"] {
 button[data-test^="playqueue-"]:hover,
 button[data-test^="nowplaying-playqueue-"]:hover {
     background-color: var(--bg-button-hover);
+}
+
+[class*="fxContainer"] {
+    overflow: visible;
+    border-radius: 0;
 }
 
 /* =========================================================

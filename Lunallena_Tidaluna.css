@@ -1,5 +1,5 @@
 /* =========================================================
-   LUNALLENA 3.27 🌕 by Acercandr0
+   LUNALLENA 3.3 🌕 by Acercandr0
    Theme for Full Screen experience with Tidaluna
    ========================================================= */
 
@@ -28,10 +28,8 @@
     --hover-inactive: grayscale(0%) opacity(50%);
     --hover-active: grayscale(0%) opacity(100%);
 
-    /* Accent Colors */
+    /* Accent Color */
     --accent: rgb(112, 255, 196);
-    --wave-color-solid-rainbow-yellow-fill: rgb(242, 255, 145);
-    --wave-color-solid-accent-fill: rgb(65, 255, 192);
 }
 
 /* =========================================================
@@ -95,10 +93,6 @@ h1 {
     color: var(--accent);
 }
 
-[class="quality-tag"] {
-    color: var(--wave-color-solid-rainbow-yellow-fill) !important;
-}
-
 [data-wave-color="textTertiary"] {
     color: var(--accent);
 }
@@ -132,8 +126,8 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
 }
 
 [class*="MuiContainer"] {
-    padding-bottom: var(--miniPlayerHeight);
     margin-top: 70px;
+    padding-bottom: calc(var(--miniPlayerHeight) - 70px);
 }
 
 /* =========================================================
@@ -168,10 +162,10 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
 
 /* Main Header */
 #mainHeader {
-    right: 2%;
+    right: 2vh;
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    margin-top: -52px;
+    margin-top: -55px;
     width: 450px;
     border: var(--border-glass);
     border-radius: 0 0 20px 20px;
@@ -284,9 +278,9 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
     height: 75%;
-    top: 6.5%;
+    margin-top: 8vh;
     overflow: visible;
-    left: calc(var(--sidebarWidth) * -1 + 20px);
+    left: calc(var(--sidebarWidth) * -1 + 15px);
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -390,7 +384,7 @@ div[class*="_container_"][class*="_overlay_"]::before {
    ========================================================= */
 
 [class*="cardContainer"] {
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: -100vh;
     margin-right: -100vh;
     padding-left: 100vh;
@@ -411,7 +405,7 @@ div[class*="_container_"][class*="_overlay_"]::before {
 
 [class*="_card_"] [class*="_imageContainer_"]:hover {
     filter: var(--hover-active) !important;
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
 
 div[class^="_overlay_"] {
@@ -500,6 +494,18 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     overflow: visible !important;
 }
 
+[class*='_knob_'] {
+    margin-left: -6px;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    box-shadow: none;;
+}
+
+button[aria-label="Play queue"] {
+    height: 32px;
+}
+
 /* Album Art Animation */
 @keyframes spin-lp {
     from { transform: rotate(0deg); }
@@ -576,6 +582,10 @@ button[data-test="request-fullscreen"]:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+figure[data-test="now-playing-image"] {
+    box-shadow: none;
+}
+
 /* =========================================================
    PLAY QUEUE
    ========================================================= */
@@ -586,15 +596,14 @@ button[data-test="request-fullscreen"]:hover {
     background-color: var(--bg-glass-dark);
     border: var(--border-glass);
     backdrop-filter: var(--blur-glass);
-    height: calc(100% - var(--miniPlayerHeight) - 115px);
+    height: calc(100% - var(--miniPlayerHeight) - 100px);
     top: 50px;
 }
 
 /* Play Queue Positioning */
 div[class*="_playQueueWithHeader_"] {
     gap: 5px;
-    top: 1.5%;
-    right: 1.5%;
+    top: 15px;
 }
 
 div[class*="_playQueueWithoutHeader_"] {
@@ -617,6 +626,11 @@ button[data-test^="nowplaying-playqueue-"] {
 button[data-test^="playqueue-"]:hover,
 button[data-test^="nowplaying-playqueue-"]:hover {
     background-color: var(--bg-button-hover);
+}
+
+[class*="fxContainer"] {
+    overflow: visible;
+    border-radius: 0;
 }
 
 /* =========================================================
