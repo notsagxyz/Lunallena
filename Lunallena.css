@@ -156,7 +156,7 @@ h1 {
     height: 79vh
 }
 
-[class^="_sectionHeader"] {
+[class*="_sectionHeader"] {
     position: relative;
     background-color: transparent;
 }
@@ -324,11 +324,11 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
 
 [class*="_sidebarWrapper_"] {
     border-radius: 0 20px 20px 0;
+    left: -47px;
     border: var(--border);
     border-left: none;
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    left: -47px;
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
