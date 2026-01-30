@@ -401,7 +401,6 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
    ========================================================= */
 
 [class*="cardContainer"] {
-    min-width: 100vw;
     margin-left: -100vh;
     margin-right: -100vh;
     padding-left: 100vh;
@@ -409,8 +408,8 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     scroll-padding: 100vh;
 }
 
-#main > div > div._feed_412931c > div:nth-child(2) {
-    min-width: 100vw;
+[class*="cardContainer"][class*="buttonContainer"] {
+    transform: translateX(-150px);
 }
 
 [class*="_card_"] [class*="_imageContainer_"] {
