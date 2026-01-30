@@ -1,5 +1,5 @@
 /* =========================================================
-   Lunallena 🌕 v3.5
+   Lunallena 🌕 v4.0
    by Acercandr0
    ========================================================= */
 
@@ -8,6 +8,11 @@
    ========================================================= */
 
 :root {
+
+    /* Accent Color */
+    --accent: rgb(216, 255, 144);
+    --wave-color-solid-accent-fill: rgb(144, 255, 179);
+
     /* Background Colors */
     --bg-solid: rgb(0, 0, 0);
     --bgeneral: rgb(0, 0, 0);
@@ -18,38 +23,23 @@
     --bg-shortcut-hover: rgba(255, 255, 255, 0.15);
     --bg-button-hover: rgba(255, 255, 255, 0.12);
 
-    /* Border & Radius */
-    --border-glass: 1px solid rgba(255, 255, 255, 0.12);
-    --radius-player: 30px;
+    /* Border */
+    --border: 1px solid rgba(255, 255, 255, 0.06);
     
     /* Effects */
     --blur-glass: blur(35px) saturate(2.5);
+    --blur: blur(17px) saturate(3);
     --blur-now-playing: blur(40px) saturate(2.5);
     --hover-inactive: grayscale(0%) opacity(50%);
     --hover-active: grayscale(0%) opacity(100%);
-
-    /* Accent Color */
-    --accent: rgb(112, 255, 196);
 }
 
 /* =========================================================
    GENERAL OVERRIDES
    ========================================================= */
 
-/* Font Override */
-[class="wave-text-body-demi"] {
-    font-size: 14px;
-}
-
-/* Tidal Tags */
-[class="format-info"] {
-    font-size: 11px !important;
-    max-width: 50px;
-    background: var(--bg-glass-light);
-}
-
-/* Scrollbars */
 * {
+    text-decoration: none !important;
     scrollbar-width: none !important;
 }
 
@@ -57,12 +47,37 @@
     display: none;
 }
 
+/* Font Override */
+[class="wave-text-body-demi"] {
+    font-size: 14px;
+}
+
+[class*="divider"] {
+    display: none;
+}
+
+#spotlighted-badge {
+    filter: none !important;
+}
+
+#spotlighted-badge * {
+    fill: var(--wave-color-solid-accent-fill) !important;
+}
+
+/* Tidal Tags */
+[class="format-info"] {
+    font-size: 11px !important;
+    max-width: 50px;
+    padding: 7px;
+    background: var(--bg-glass-light);
+}
+
 /* =========================================================
    TEXT STYLES
    ========================================================= */
 
 [class*="headerContainer"] > h2 {
-    font-size: 35px !important;
+    font-size: 30px !important;
     color: var(--accent);
 }
 
@@ -71,7 +86,7 @@
 }
 
 h1 {
-    font-size: 35px !important;
+    font-size: 30px !important;
     color: var(--accent) !important;
 }
 
@@ -102,32 +117,65 @@ h1 {
    ========================================================= */
 
 /* Window Maxed Space */
-div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="hasPlayer"] {
-    max-height: 100vh !important;
-}
 
-.is-windows.is-desktop {
-    min-height: 100vh;
-    margin-top: -30px;
+[class*="_bar_"] {
+    border: none !important;
 }
 
 #main {
-    background-color: var(--bgeneral);
-    min-height: 100vh;
-    margin-top: 0px;
-    margin-left: calc(var(--sidebarWidth) * -2);
-    padding-left: var(--sidebarWidth);
-    min-width: 100vh;
+    height: 100svh;
+    max-height: calc(100svh - var(--os-title-bar-height));
+    margin-top: 0;
+    left: calc(var(--sidebarWidth) * -1);
+    min-width: 100vw;
+    --playQueueWidth: 0px;
 }
 
 .mainContent {
+    min-height: 100svh !important;
+    width: 100vw;
     padding-bottom: var(--miniPlayerHeight);
-    margin-top: 40px;
+}
+
+[data-test="home-page-feed"] {
+    margin-top: 20px;
+}
+
+[class*="feed"] {
+    width: 100vw;
 }
 
 [class*="MuiContainer"] {
-    margin-top: 70px;
-    padding-bottom: calc(var(--miniPlayerHeight) - 70px);
+    margin-top: 90px;
+    padding-bottom: 40px;
+}
+
+[class*="_sidebarWrapper_"] {
+    top: 2vh;
+    height: 79vh
+}
+
+[class^="_sectionHeader"] {
+    position: relative;
+    background-color: transparent;
+}
+
+/* =========================================================
+   QUEUE SIDEBAR
+   ========================================================= */
+
+[class*="playQueueWrapper"] {
+    height: 100svh;
+    margin-left: calc(var(--playQueueWidth) * -1 - 480px);
+}
+
+#playQueueSidebar {
+    background-color: var(--bg-glass-light) !important;
+    backdrop-filter: var(--blur-glass);
+}
+
+[aria-label="Play queue"] > div:last-child {
+    padding-bottom: 60px;
 }
 
 /* =========================================================
@@ -135,13 +183,13 @@ div[class*="containerRow"][class*="is-desktop"][class*="is-windows"][class*="has
    ========================================================= */
 
 [class*="_bar_"] {
-    background: var(--bg-glass-darker) !important;
-    backdrop-filter: var(--blur-glass);
-    border-bottom: var(--border-glass);
+    background: var(--bg-glass-dark) !important;
+    backdrop-filter: var(--blur);
+    border-bottom: var(--border) !important;
 }
 
 div[class^="_bar_"] > div[class^="_title_"] * {
-    color: white !important;
+    color: var(--wave-color-solid-accent-fill) !important;
 }
 
 div[class*="_bar_"] button[class*="_button_"] {
@@ -162,12 +210,14 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
 
 /* Main Header */
 #mainHeader {
-    right: 2vh;
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    margin-top: -50px;
-    width: 450px;
-    border: var(--border-glass);
+    margin-top: -80px;
+    margin-left: calc(var(--sidebarWidth) *-1);
+    width: 30vw;
+    left: 55%;
+    transform: translateX(-50%);
+    border: var(--border);
     border-radius: 0 0 20px 20px;
     padding-top: 45px;
     padding-left: 20px;
@@ -177,14 +227,14 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
     pointer-events: visible;
 }
 
+#mainHeader:hover {
+    margin-top: -30px;
+}
+
 #mainHeader > * {
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
-}
-
-#mainHeader:hover {
-    margin-top: 0px;
 }
 
 #mainHeader:hover > * {
@@ -195,7 +245,7 @@ div[class*="_bar_"] button[class*="_button_"]:hover svg {
 /* Search Field */
 [data-type="search-field"] {
     background-color: transparent;
-    border: var(--border-glass);
+    border: var(--border);
     box-shadow: none;
 }
 
@@ -251,7 +301,7 @@ div[class^="_smallHeader_"]::before {
 div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    border-bottom: var(--border-glass);
+    border-bottom: var(--border);
     left: 0;
     padding-left: 120px;
     padding-right: 5%;
@@ -272,16 +322,17 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
 }
 
 [class*="_sidebarWrapper_"] {
-    border-left: none !important;
     border-radius: 0 20px 20px 0;
-    border: var(--border-glass);
+    border: var(--border);
+    border-left: none;
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    height: 75%;
-    margin-top: 8vh;
-    overflow: visible;
-    left: calc(var(--sidebarWidth) * -1 + 20px);
+    left: -47px;
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[class*="_sidebarWrapper_"]:hover {
+    left: 0px;
 }
 
 [class*="_sidebarWrapper_"] > * {
@@ -295,28 +346,8 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
     pointer-events: auto;
 }
 
-[class*="_sidebarWrapper_"]:hover {
-    left: 0px;
-}
-
 [aria-label="Navigation sidebar"] {
     background-color: transparent;
-}
-
-/* Playlists Section */
-[aria-label="Playlists"][data-test="sidebar-scrollable-nav"] {
-    transform: none; 
-    clip-path: inset(0);
-    overflow-y: auto;
-    height: 100%;
-}
-
-[aria-label="Playlists"][data-test="sidebar-scrollable-nav"]::after {
-    content: "";
-    display: block;
-    min-height: 50px;
-    width: 100%;
-    pointer-events: none;
 }
 
 /* Focus Hover Effect */
@@ -331,52 +362,37 @@ div[data-test-module-type="CONTRIBUTOR_HEADER"] header[class*="container"] {
 [aria-label="Playlists"] [class*="_contentItem_"]:hover,
 [aria-label="Playlists"] [class*="_selected_"] {
     filter: var(--hover-active) !important;
+    transform: scale(1.03);
 }
 
-[aria-label="Playlists"] [class*="_selected_"] {
-    background: none;
+/* Sidebar Navlinks */
+[class*="_navLinkInnerLayout_"] {
+    background-color: transparent;
+    transition: background-color 0.4s ease, transform 0.4s ease;
 }
 
-[class*="_sectionHeader_"] {
-    background: transparent;
+[class*="_navLinkInnerLayout_"]:hover {
+    background-color: var(--bg-glass-dark);
+    transform: scale(1.03);
 }
 
-/* =========================================================
-   HOME PAGE & FEED
-   ========================================================= */
-
-div[class*="_divider_"] {
-    height: 0;
+[class*="_expandableSectionTitle_"] {
+    transition: transform 0.4s ease;
 }
 
-/* Shortcuts */
-[data-test="shortcut-list"] {
-    row-gap: 10px;
+[class*="_expandableSectionTitle_"]:hover {
+    transform: scale(1.03);
 }
 
-[class*="_shortcutItem_"] {
-    background-color: var(--bg-shortcut);
-    box-shadow: none;
-    border-radius: 10px;
-    filter: var(--hover-inactive);
-    transition: filter 0.3s ease-in-out, transform 0.6s cubic-bezier(0.3, 1.5, 0.6, 1);
+/* Sidebar Buttons */
+[data-test="user-profile-avatar"] {
+    background-color: transparent;
+    border: var(--border);
 }
 
-[data-test="shortcut-list"] [class*="_shortcutItem_"]:hover {
-    filter: var(--hover-active) !important;
-}
-
-[class*="_shortcutItem_"]:hover {
-    background-color: var(--bg-shortcut-hover);
-    filter: var(--hover-active) !important;
-}
-
-div[class*="_container_"][class*="_overlay_"]::before {
-    display: none;
-}
-
-[class^="_playButtonContainer_"] button[class*="_playButton_"] {
-    padding: 10px;
+[class*="_addButton_"] {
+    padding-left: 22px;
+    padding-right: 22px;
 }
 
 /* =========================================================
@@ -384,7 +400,7 @@ div[class*="_container_"][class*="_overlay_"]::before {
    ========================================================= */
 
 [class*="cardContainer"] {
-    margin-top: 15px;
+    min-width: 100vw;
     margin-left: -100vh;
     margin-right: -100vh;
     padding-left: 100vh;
@@ -392,10 +408,13 @@ div[class*="_container_"][class*="_overlay_"]::before {
     scroll-padding: 100vh;
 }
 
+#main > div > div._feed_412931c > div:nth-child(2) {
+    min-width: 100vw;
+}
+
 [class*="_card_"] [class*="_imageContainer_"] {
     border-radius: 10px;
     overflow: hidden;
-    transform: translateY(0) scale(1);
     transition: filter 0.6s ease-in-out, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -405,7 +424,14 @@ div[class*="_container_"][class*="_overlay_"]::before {
 
 [class*="_card_"] [class*="_imageContainer_"]:hover {
     filter: var(--hover-active) !important;
-    transform: scale(1.05);
+    transform: scale(1.03);
+}
+
+[data-test="horizontal-list--YOUR_FAVORITE_ARTISTS-scroll"] [class*="_imageContainer_"] {
+    height: 300px;
+}
+[class*="_card_"] [class*="_imageContainer_"] [class*="round"] {
+    border-radius: var(--market-core-radius-100);
 }
 
 div[class^="_overlay_"] {
@@ -416,28 +442,28 @@ div[class^="_overlay_"] {
    SEARCH PAGE
    ========================================================= */
 
-div[data-test="search-results"] > div[class*="container"]::before {
-    background-color: transparent;
-}
-
-[data-test*="search-results"] > div[class*="container"] {
+[data-test*="search-results"] > [class*="container"]::before {
+    padding-top: 65px;
     background-color: var(--bg-glass-light);
     backdrop-filter: var(--blur-glass);
-    transform: translateY(-70px);
-    padding-top: 95px;
     margin-left: -5%;
     margin-right: -5%;
     padding-left: 5%;
-    margin-bottom: -60px;
-    border-bottom: var(--border-glass);
+    border-bottom: var(--border);
+    z-index: -1;
+}
+
+[data-test*="search-results"] > [class*="container"] {
+    background: transparent;
 }
 
 div[data-test="query-suggestions"] {
-    margin-left: -100px;
+    margin-left: -9.7vw;
+    width: 30vw;
     margin-top: 15px;
-    height: 70vh;
+    height: calc(80vh - var(--miniPlayerHeight));
     background-color: var(--bg-solid);
-    border: var(--border-glass);
+    border: var(--border);
 }
 
 div[data-test="query-suggestions"] div[class*="_icon_"] {
@@ -448,22 +474,13 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
    ARTIST PAGES
    ========================================================= */
 
-[class*="headerContainer"] [class*="background"] {
-    padding-left: 72px;
-    margin-top: 20px;
-}
-
-[data-test="artist-profile"] {
-    margin-top: 55px;
-}
-
 [class*="_dataContainer_"] > div > div:nth-child(3) {
     border-radius: 10px;
     margin-left: -15px;
     padding: 15px;
-    max-width: 75%;
+    max-width: 35%;
     margin-bottom: 10px;
-    border: var(--border-glass);
+    border: var(--border);
     backdrop-filter: blur(7px);
 }
 
@@ -476,17 +493,79 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
    ========================================================= */
 
 [data-test="footer-player"] {
-    border-radius: 20px 20px 0px 0px;
-    bottom: 0%;
-    width: 96%;
-    left: 50%;
-    transform: translateX(-50%);
     position: fixed;
+    left: 50%;
+    width: 95vw;
+    height: 100px;
+    border-radius: 20px 20px 0 0;
+    transform: translateX(-50%);
     background-color: var(--bg-glass-light) !important;
-    backdrop-filter: var(--blur-glass);
-    border: var(--border-glass);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+}
+
+[data-test="footer-player"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: var(--border);
     border-bottom: none;
-    box-shadow: none !important;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+[data-test="left-column-footer-player"],
+[data-test="play-controls"],
+[data-test="footer-player"] > div:last-child {
+    z-index: 1;
+}
+
+[aria-label="Progress bar"] {
+    position: fixed;
+    top: -75px;
+    width: 95vw;
+    height: 100px;
+}
+
+[class*="_range_"] {
+    background: transparent;
+    border-radius: 20px 20px 0 0;
+}
+
+[data-test="progress-indicator"] {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+[data-test="interaction-layer"] {
+    height: 25px;
+    transform: translateY(-115px);
+    pointer-events: auto;
+}
+
+#progressBar > div > [class*="toolTip"] {
+    bottom: 112px !important;
+    scale: 1;
+    overflow: visible;
+    background-color: var(--bg-solid);
+    color: white;
+    border: var(--border);
+    height: 25px;
+}
+
+[class*="_progress_"] > [data-test="current-time"] {
+    position: absolute;
+    margin-left: -45px;
+    margin-top: 15px;
+    color: var(--accent);
+}
+
+[class*="_progress_"] > [data-test="duration"] {
+    position: absolute;
+    margin-left: 47px;
+    margin-top: 15px;
 }
 
 [data-test="left-column-footer-player"],
@@ -494,41 +573,72 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     overflow: visible !important;
 }
 
-[class*='_knob_'] {
-    margin-left: -6px;
-    border-radius: 50%;
-    height: 12px;
-    width: 12px;
-    box-shadow: none;;
+[class*="imageryContainer"] {
+    height: 64px;
+    margin-top: 4px;
+    margin-left: 2px;
+    border-radius: 7px;
+    scale: 1.3;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+[class*="currentMediaItemDetails"] {
+    margin-left: 2px;
+}
+
+[class*="notFullscreenOverlay"],
+[class*="imageryContainer"] [class*="imageBorder"] {
+    display: none;
+}
+
+[class*="playbackControls"] {
+    margin-top: 2px;
+}
+
+[data-test*="media-state"],
+[aria-label="Shuffle"],
+[aria-label="Repeat"],
+[aria-label="Repeat one"],
+[aria-label="Sound output"],
+[aria-label="toggle now playing screen"] {
+    border-radius: var(--market-core-radius-100);
 }
 
 button[aria-label="Play queue"] {
     height: 32px;
+    border-radius: var(--market-core-radius-100);
 }
 
-/* Album Art Animation */
-@keyframes spin-lp {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+[class*='_knob_'] {
+    width: 10px;
+    height: 10px;
+    margin-left: -6px;
+    margin-top: -2px;
+    border-radius: 50%;
+    box-shadow: none;
+    background-color: var(--wave-color-solid-accent-fill);
+
 }
 
-[class*="imageryContainer"] {
-    border-radius: 100VH !important;
-    position: absolute;
-    scale: 1.15;
-    animation: spin-lp 20s linear infinite !important;
-    z-index: 2;
-    outline: var(--border-glass);
+[class*="nativeRangeContainer"] {
+    border: var(--border);
+    box-shadow: none;
+    transform: translateY(-20px) scale(1.15);
 }
 
-div:has(> [class*="imageryContainer"]) {
-    position: relative !important;
-    overflow: visible !important;
+[class*="nativeRangeContainer"]::after {
+    display: none;
 }
 
-[class*="_currentMediaItemDetails_"] {
-    margin-left: 80px;
-    max-width: 270px;
+input[class*="_nativeRange"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: none;
+    transform: translateY(1px);
+    background-color: var(--accent);
 }
 
 /* =========================================================
@@ -552,7 +662,7 @@ div:has(> [class*="imageryContainer"]) {
 [class*="_nativeRangeContainer_"] {
     transform: translateY(-20px) scale(1.2);
     background-color: var(--bg-solid);
-    border: var(--border-glass);
+    border: var(--border);
     box-shadow: none;
     overflow: hidden;
 }
@@ -565,7 +675,7 @@ div:has(> [class*="imageryContainer"]) {
 button[data-test="close-now-playing"],
 button[data-test="request-fullscreen"] {
     background-color: transparent;
-    border: var(--border-glass);
+    border: var(--border);
     transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
 }
 
@@ -578,57 +688,8 @@ button[data-test="request-fullscreen"]:hover {
     padding-bottom: 80px;
 }
 
-[class*="divider"] {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 figure[data-test="now-playing-image"] {
     box-shadow: none;
-}
-
-/* =========================================================
-   PLAY QUEUE
-   ========================================================= */
-
-#playQueueSidebar {
-    border-radius: 15px;
-    margin-right: -2px;
-    background-color: var(--bg-glass-dark);
-    border: var(--border-glass);
-    backdrop-filter: var(--blur-glass);
-    height: calc(100% - var(--miniPlayerHeight) - 100px);
-    top: 50px;
-}
-
-/* Play Queue Positioning */
-div[class*="_playQueueWithHeader_"] {
-    gap: 5px;
-    top: 15px;
-}
-
-div[class*="_playQueueWithoutHeader_"] {
-    right: 2vw;
-    gap: 7px;
-}
-
-/* Play Queue Buttons */
-button[data-test^="playqueue-"],
-button[data-test^="nowplaying-playqueue-"] {
-    background-color: var(--bg-glass-dark);
-    scale: 0.9;
-    border: var(--border-glass);
-    overflow: hidden;
-    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
-}
-
-button[data-test^="playqueue-"]:hover,
-button[data-test^="nowplaying-playqueue-"]:hover {
-    background-color: var(--bg-shortcut-hover) !important;
-}
-
-[class*="fxContainer"] {
-    overflow: visible;
-    border-radius: 0;
 }
 
 /* =========================================================
@@ -639,7 +700,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
 [class*="contextMenu"][role="menu"] {
     position: relative;
     background-color: transparent;
-    border: var(--border-glass);
+    border: var(--border);
     box-shadow: none;
 }
 
@@ -660,7 +721,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
 [class*="_subMenu_"] {
     position: relative;
     background-color: transparent;
-    border: var(--border-glass);
+    border: var(--border);
     box-shadow: none;
     overflow: hidden;
     z-index: 0;
@@ -683,7 +744,7 @@ button[data-test^="nowplaying-playqueue-"]:hover {
 
 [role="menu"][class*="_submenu"] {
     background-color: var(--bg-solid);
-    border: var(--border-glass);
+    border: var(--border);
     box-shadow: none;
     z-index: 1;
 }
@@ -697,14 +758,14 @@ button[data-test^="nowplaying-playqueue-"]:hover {
 [class*="_marketTooltipContainer_"] {
     background-color: var(--bg-glass-dark);
     backdrop-filter: var(--blur-glass);
-    border: var(--border-glass);
+    border: var(--border);
     color: white;
 }
 
 [class*="_tooltipText_"] {
     background-color: transparent;
     backdrop-filter: var(--blur-glass);
-    border: var(--border-glass);
+    border: var(--border);
     color: white;
 }
 
