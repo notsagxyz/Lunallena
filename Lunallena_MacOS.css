@@ -454,7 +454,7 @@ div[class^="_overlay_"] {
 /* =========================================================
    SEARCH PAGE
    ========================================================= */
-
+   
 [data-test*="search-results"] > [class*="container"]::before {
     padding-top: 65px;
     background-color: var(--bg-glass-light);
