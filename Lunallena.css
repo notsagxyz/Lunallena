@@ -580,7 +580,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     left: 0;
     height: 100% !important;
     background-color: rgba(255, 255, 255, 0.07) !important;
-    border-radius: 20px;
+    border-radius: 20px 0 0 20px;
     transition: width 0.2s linear;
 }
 
