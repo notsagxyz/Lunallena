@@ -543,72 +543,46 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     pointer-events: auto;
 }
 
-/* Barra de progreso como fondo del footer */
 [aria-label="Progress bar"] {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    z-index: 1 !important;
+    position: fixed;
+    top: -75px;
+    width: 98vw;
+    height: 100px;
 }
 
 [class*="_range_"] {
-    background-color: transparent !important;
-    border: none !important;
-    height: 100% !important;
-    border-radius: 0 !important;
+    background: transparent;
+    border-radius: 20px;
 }
 
 [data-test="progress-indicator"] {
+    background-color: rgba(255, 255, 255, 0.07);
     height: 100% !important;
-    background-color: rgba(255, 255, 255, 0.07) !important;
-    border-radius: 20px !important;
-    transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: 20px;
 }
 
 [data-test="interaction-layer"] {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 5 !important;
-    pointer-events: auto !important;
-    cursor: pointer;
-    background: transparent;
+    height: 25px;
+    transform: translateY(-115px);
+    pointer-events: auto;
 }
 
-/* Bloquea que el interaction-layer abra now playing */
-[data-test="footer-player"] [data-test="interaction-layer"] {
-    pointer-events: auto !important;
-}
-
-/* Tooltip del progreso */
 #progressBar > div > [class*="toolTip"] {
-    bottom: 100% !important;
-    margin-bottom: 10px;
-    transform: translateX(-50%);
+    bottom: 112px !important;
+    scale: 1;
+    overflow: visible;
     background-color: var(--bg-solid);
     color: white;
     border: var(--border);
     height: 25px;
-    display: flex;
-    align-items: center;
-    padding: 0 8px;
-    z-index: 50;
 }
 
-/* Tiempos centrados debajo de los controles */
 [class*="_progress_"] > [data-test="current-time"] {
     position: absolute;
     left: 50% !important;
     transform: translateX(-80px) !important;
     top: 65px !important;
     margin: 0 !important;
-    z-index: 15;
     color: var(--accent);
 }
 
@@ -618,21 +592,17 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     transform: translateX(80px) !important;
     top: 65px !important;
     margin: 0 !important;
-    z-index: 15;
     opacity: 0.8;
 }
 
-/* Knob */
 [class*='_knob_'] {
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    top: 0 !important;
-    transform: translateY(-40%);
-    background-color: var(--wave-color-solid-accent-fill);
+    width: 10px;
+    height: 10px;
+    margin-left: -6px;
+    margin-top: -2px;
     border-radius: 50%;
-    z-index: 20;
-    pointer-events: none;
+    box-shadow: none;
+    background-color: var(--wave-color-solid-accent-fill);
 }
 
 [data-test="left-column-footer-player"],
