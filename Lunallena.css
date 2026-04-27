@@ -512,18 +512,18 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
    ========================================================= */
 
 [data-test="footer-player"] {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 98vw;
-    height: 100px;
-    bottom: 2vh;
-    background-color: var(--bg-glass-light) !important;
-    backdrop-filter: var(--blur);
-    border-radius: 20px;
-    border: var(--border);
-    overflow: hidden !important; 
-    isolation: isolate; /* Fuerza el recorte perfecto de las esquinas */
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98vw;
+    height: 100px;
+    bottom: 2vh;
+    background-color: var(--bg-glass-light) !important;
+    backdrop-filter: var(--blur);
+    border-radius: 20px;
+    border: var(--border);
+    overflow: hidden !important; 
+    isolation: isolate;
 }
 
 [data-test="footer-player"]::before {
@@ -542,22 +542,20 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 [data-test="left-column-footer-player"],
 [data-test="play-controls"],
 [data-test="footer-player"] > div:last-child {
-    z-index: 30 !important; 
-    position: relative;
-    pointer-events: auto;
+    z-index: 50 !important; /* Bajamos un poco para que el input mande arriba */
+    position: relative;
+    pointer-events: auto;
+}
+[aria-label="Progress bar"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none !important;
 }
 
-[aria-label="Progress bar"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    z-index: 0;
-    pointer-events: none !important;
-}
 
 [class*="_range_"] {
     background-color: transparent !important;
@@ -566,10 +564,10 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 }
 
 [data-test="progress-indicator"] {
-    height: 100% !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 20px !important; /* Suaviza el borde interno */
-    transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    height: 100% !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 [data-test="interaction-layer"] {
@@ -581,41 +579,40 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     pointer-events: auto !important;
     z-index: 100;           /* Justo debajo del punto verde */
     cursor: pointer;
+    display: none !important;
 }
 
 #progressBar > div > [class*="toolTip"] {
-    bottom: 100% !important;
-    margin-bottom: 10px;
-    transform: translateX(-50%);
-    background-color: var(--bg-solid);
-    color: white;
-    border: var(--border);
-    height: 25px;
-    display: flex;
-    align-items: center;
-    padding: 0 8px;
-    z-index: 50;
+    bottom: 100% !important;
+    margin-bottom: 15px;
+    transform: translateX(-50%);
+    background-color: var(--bg-solid);
+    color: white;
+    border: var(--border);
+    height: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    z-index: 250; /* Más alto que el input */
 }
 
 
 [class*="_progress_"] > [data-test="current-time"] {
-    position: absolute;
-    left: 50% !important;
-    transform: translateX(-80px) !important; 
-    top: 65px !important;
-    margin: 0 !important;
-    z-index: 10;
-    color: var(--accent);
+    position: absolute;
+    left: 50% !important;
+    transform: translateX(-80px) !important; 
+    top: 65px !important;
+    z-index: 101;
+    color: var(--accent);
 }
 
 [class*="_progress_"] > [data-test="duration"] {
-    position: absolute;
-    right: 50% !important;
-    transform: translateX(80px) !important; 
-    top: 65px !important;
-    margin: 0 !important;
-    z-index: 10;
-    opacity: 0.8;
+    position: absolute;
+    right: 50% !important;
+    transform: translateX(80px) !important; 
+    top: 65px !important;
+    z-index: 101;
+    opacity: 0.8;
 }
 
 
@@ -661,37 +658,54 @@ button[aria-label="Play queue"] {
 }
 
 [class*='_knob_'] {
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    top: 6px !important;    /* Lo bajamos un poco para que no lo corte el borde superior */
-    transform: translate(-50%, -50%);
-    background-color: var(--wave-color-solid-accent-fill);
-    border-radius: 50%;
-    z-index: 110;           /* Por encima de la capa de interacción */
-    pointer-events: auto;   /* Importante: que detecte el click/drag */
-    box-shadow: 0 0 5px rgba(0,0,0,0.5); /* Le da profundidad para que se vea mejor */
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 1px !important; /* Casi pegado arriba para que no estorbe */
+    transform: translateX(-50%);
+    background-color: var(--wave-color-solid-accent-fill);
+    border-radius: 50%;
+    z-index: 100; /* Debajo del input nativo */
+    pointer-events: none;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+input[class*="_nativeRange"] {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 30px !important;  /* Define el área de click en la parte superior */
+    opacity: 0 !important;     /* Lo hace invisible para que veas tu diseño */
+    z-index: 200 !important;   /* Lo pone por encima de todo para capturar el click */
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    margin: 0 !important;
 }
 
 [class*="nativeRangeContainer"] {
-    border: var(--border);
+    border: none !important;   /* Quitamos el borde para que no ensucie el fondo */
     box-shadow: none;
-    transform: translateY(-20px) scale(1.15);
+    transform: none !important; /* Reseteamos el desplazamiento para que cubra el fondo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 [class*="nativeRangeContainer"]::after {
     display: none;
 }
 
+
 input[class*="_nativeRange"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
     height: 40px;
-    border-radius: 50%;
-    box-shadow: none;
-    transform: translateY(1px);
-    background: transparent;
+    background: transparent; /* Invisible para no tapar el punto verde */
+    cursor: pointer;
 }
 
 /* =========================================================
