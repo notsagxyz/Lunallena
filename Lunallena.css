@@ -509,7 +509,6 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 /* =========================================================
    FOOTER PLAYER
    ========================================================= */
-
 [data-test="footer-player"] {
     position: fixed;
     left: 50%;
@@ -521,8 +520,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     backdrop-filter: var(--blur);
     border-radius: 20px;
     border: var(--border);
-    overflow: visible !important;          /* FIX: era hidden, cortaba el knob */
-    clip-path: inset(0 round 20px);        /* FIX: recorta el fondo sin cortar el knob */
+    overflow: hidden !important;
     isolation: isolate;
 }
 
@@ -658,13 +656,14 @@ button[aria-label="Play queue"] {
     width: 14px;
     height: 14px;
     position: absolute;
-    top: 50% !important;                   /* FIX: centrado vertical real */
+    top: 0 !important;
     transform: translateY(-50%);
     background-color: var(--wave-color-solid-accent-fill);
     border-radius: 50%;
     z-index: 30;
-    outline: none;                         /* FIX: outline causaba desborde */
+    outline: none;
     pointer-events: none;
+    margin-top: 1px;                       /* Lo baja apenas dentro del overflow */
 }
 
 [class*="nativeRangeContainer"] {
