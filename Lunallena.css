@@ -506,9 +506,8 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 [class*="backgroundBlur"] {
     display: none;
 }
-
 /* =========================================================
-   FOOTER PLAYER - FINAL FIX 🌕
+   FOOTER PLAYER - THE NUCLEAR OPTION 🌕
    ========================================================= */
 
 [data-test="footer-player"] {
@@ -522,32 +521,50 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     backdrop-filter: var(--blur) !important;
     border-radius: 20px !important;
     border: var(--border) !important;
-    /* Quitamos overflow:hidden para que el punto verde respire */
-    overflow: visible !important; 
+    overflow: visible !important; /* Mantiene el punto verde visible */
 }
 
-/* 1. MOTOR DE CLICK (Invisible y prioritario) */
-/* Lo bajamos un poquito para que no se salga por arriba y el navegador lo detecte */
+/* EL MOTOR DEL CLICK: Forzamos al input a ser "intocable" */
 input[class*="_nativeRange"] {
     position: absolute !important;
-    top: 5px !important; 
+    top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: 30px !important; 
-    opacity: 0 !important;
-    z-index: 1000 !important;
+    height: 40px !important; /* Franja de click superior */
+    opacity: 0.0001 !important; /* Casi invisible pero el navegador lo ve como real */
+    z-index: 9999 !important;  /* POR ENCIMA DE TODO LO EXISTENTE */
     cursor: pointer !important;
     pointer-events: auto !important;
-    margin: 0 !important;
+    display: block !important;
+    visibility: visible !important;
 }
 
+/* El Thumb (el agarre) debe ser gigante para que el click no falle nunca */
 input[class*="_nativeRange"]::-webkit-slider-thumb {
     -webkit-appearance: none !important;
-    width: 40px !important; 
-    height: 40px !important;
+    width: 50px !important; 
+    height: 50px !important;
+    cursor: pointer !important;
 }
 
-/* 2. EL RELLENO GRIS (Ahora con su propio recorte de esquinas) */
+/* Quitamos lo que Tidal usa para bloquearnos */
+[data-test="interaction-layer"],
+[class*="nativeRangeContainer"]::after {
+    display: none !important;
+}
+
+[class*="nativeRangeContainer"] {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 9998 !important; /* Justo debajo del input */
+    transform: none !important;
+    border: none !important;
+}
+
+/* ESTÉTICA: Fondo Gris */
 [aria-label="Progress bar"] {
     position: absolute !important;
     top: 0 !important;
@@ -555,57 +572,44 @@ input[class*="_nativeRange"]::-webkit-slider-thumb {
     width: 100% !important;
     height: 100% !important;
     z-index: 0 !important;
-    pointer-events: none !important;
-    /* Aquí es donde recortamos el gris sin cortar el punto verde */
     border-radius: 20px !important;
     overflow: hidden !important;
+    pointer-events: none !important;
 }
 
 [data-test="progress-indicator"] {
     height: 100% !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 0 !important; /* El recorte lo hace el padre ahora */
-    transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* 3. PUNTO VERDE (KNOB) - Ahora visible */
+/* PUNTO VERDE (KNOB) */
 [class*='_knob_'] {
     width: 14px !important;
     height: 14px !important;
     position: absolute !important;
-    top: 0 !important; /* Lo pegamos al borde superior exacto */
+    top: 0 !important; 
     transform: translate(-50%, -50%) !important;
     background-color: var(--wave-color-solid-accent-fill) !important;
     border-radius: 50% !important;
-    z-index: 1100 !important; /* Por encima de todo */
-    box-shadow: 0 0 8px rgba(0,0,0,0.6) !important;
+    z-index: 1000 !important; /* Debajo del input gigante */
     pointer-events: none !important;
 }
 
-/* 4. CONTROLES Y BOTONES */
+/* CONTROLES (Like, Play, etc) */
 [data-test="left-column-footer-player"],
 [data-test="play-controls"],
 [data-test="footer-player"] > div:last-child {
-    z-index: 50 !important; 
+    z-index: 10 !important; /* Prioridad baja para que el click de arriba gane */
     position: relative !important;
 }
 
-/* 5. TIEMPOS Y TOOLTIP */
-#progressBar > div > [class*="toolTip"] {
-    bottom: 25px !important; /* Bajado para que no vuele tanto */
-    transform: translateX(-50%) !important;
-    background-color: var(--bg-solid) !important;
-    color: white !important;
-    border: var(--border) !important;
-    padding: 2px 8px !important;
-    z-index: 1200 !important;
-}
-
+/* TIEMPOS */
 [class*="_progress_"] > [data-test="current-time"] {
     position: absolute !important;
     left: 50% !important;
     transform: translateX(-85px) !important; 
     top: 65px !important;
+    z-index: 20 !important;
     color: var(--accent) !important;
 }
 
@@ -614,23 +618,16 @@ input[class*="_nativeRange"]::-webkit-slider-thumb {
     right: 50% !important;
     transform: translateX(85px) !important; 
     top: 65px !important;
+    z-index: 20 !important;
 }
 
-/* Limpieza de basura de Tidal */
-[data-test="interaction-layer"], 
-[class*="_range_"], 
-[class*="nativeRangeContainer"]::after {
-    display: none !important;
+/* Tooltip */
+#progressBar > div > [class*="toolTip"] {
+    bottom: 20px !important;
+    transform: translateX(-50%) !important;
+    z-index: 10000 !important; /* Arriba de todo para que se lea */
 }
 
-[class*="nativeRangeContainer"] {
-    border: none !important;
-    transform: none !important;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
 /* =========================================================
    NOW PLAYING
    ========================================================= */
