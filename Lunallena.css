@@ -518,9 +518,12 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     width: 98vw;
     height: 100px;
     bottom: 2vh;
-    border-radius: 20px;
     background-color: var(--bg-glass-light) !important;
     backdrop-filter: var(--blur);
+    border-radius: 20px;
+    overflow: hidden !important; 
+    isolation: isolate; /* Esto fuerza al navegador a respetar el contenedor para los hijos */
+}
 }
 
 [data-test="footer-player"]::before {
@@ -555,13 +558,16 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 }
 
 [class*="_range_"] {
-    background-color: transparent !important; 
+    background-color: transparent !important;
+    border: none !important;
     height: 100%;
 }
+
 [data-test="progress-indicator"] {
-    height: 100% !important;   /* Obliga a llenar todo el alto */
-    background-color: rgba(255, 255, 255, 0.1) !important; /* Color gris suave para el fondo */
-    border-radius: 20px 0 0 20px; /* Redondeo solo a la izquierda */
+    height: 100% !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important; 
+    transition: width 0.1s linear; /* Para que el movimiento sea fluido y no a saltos */
 }
 
 [data-test="interaction-layer"] {
