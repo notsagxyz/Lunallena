@@ -543,10 +543,11 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 }
 
 [aria-label="Progress bar"] {
-    position: fixed;
-    top: -75px;
-    width: 98vw;
-    height: 100px;
+    position: absolute; /* Cambiado de fixed a absolute para que se pegue al contenedor padre */
+    top: -12px;         /* Ajusta esto para que "repose" sobre el borde superior */
+    width: 100%;        /* Que ocupe el ancho del reproductor */
+    height: 25px;
+    left: 0;
 }
 
 [class*="_range_"] {
@@ -559,13 +560,13 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 }
 
 [data-test="interaction-layer"] {
-    height: 25px;
-    transform: translateY(-115px);
+    height: 100%;
+    transform: translateY(0); /* Eliminamos el desplazamiento negativo que la subía */
     pointer-events: auto;
 }
 
 #progressBar > div > [class*="toolTip"] {
-    bottom: 112px !important;
+    bottom: 30px !important; /* Bajamos el tooltip para que no flote tan lejos */
     scale: 1;
     overflow: visible;
     background-color: var(--bg-solid);
@@ -574,11 +575,10 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     height: 25px;
 }
 
-[class*="_progress_"] > [data-test="current-time"] {
+[class*="_progress_"] > [data-test="duration"] {
     position: absolute;
-    margin-left: -45px;
-    margin-top: 15px;
-    color: var(--accent);
+    right: 20px;      /* Ajuste horizontal */
+    top: 40px;        /* Ajuste vertical */
 }
 
 [class*="_progress_"] > [data-test="duration"] {
