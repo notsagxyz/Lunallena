@@ -508,7 +508,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 }
 
 /* =========================================================
-   FOOTER PLAYER - RESTAURACIÓN TOTAL 🌕
+   FOOTER PLAYER - FINAL FIX 🌕
    ========================================================= */
 
 [data-test="footer-player"] {
@@ -522,18 +522,18 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     backdrop-filter: var(--blur) !important;
     border-radius: 20px !important;
     border: var(--border) !important;
-    overflow: hidden !important; 
-    isolation: isolate !important;
-    z-index: 999 !important;
+    /* Quitamos overflow:hidden para que el punto verde respire */
+    overflow: visible !important; 
 }
 
 /* 1. MOTOR DE CLICK (Invisible y prioritario) */
+/* Lo bajamos un poquito para que no se salga por arriba y el navegador lo detecte */
 input[class*="_nativeRange"] {
     position: absolute !important;
-    top: 0 !important;
+    top: 5px !important; 
     left: 0 !important;
     width: 100% !important;
-    height: 35px !important; /* Zona superior para saltar en la canción */
+    height: 30px !important; 
     opacity: 0 !important;
     z-index: 1000 !important;
     cursor: pointer !important;
@@ -545,19 +545,9 @@ input[class*="_nativeRange"]::-webkit-slider-thumb {
     -webkit-appearance: none !important;
     width: 40px !important; 
     height: 40px !important;
-    cursor: pointer !important;
 }
 
-/* 2. CONTROLES Y BOTONES */
-[data-test="left-column-footer-player"],
-[data-test="play-controls"],
-[data-test="footer-player"] > div:last-child {
-    z-index: 50 !important; 
-    position: relative !important;
-    pointer-events: auto !important;
-}
-
-/* 3. ESTÉTICA (Barra de progreso y Punto Verde) */
+/* 2. EL RELLENO GRIS (Ahora con su propio recorte de esquinas) */
 [aria-label="Progress bar"] {
     position: absolute !important;
     top: 0 !important;
@@ -566,40 +556,49 @@ input[class*="_nativeRange"]::-webkit-slider-thumb {
     height: 100% !important;
     z-index: 0 !important;
     pointer-events: none !important;
+    /* Aquí es donde recortamos el gris sin cortar el punto verde */
+    border-radius: 20px !important;
+    overflow: hidden !important;
 }
 
 [data-test="progress-indicator"] {
     height: 100% !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 20px !important;
+    border-radius: 0 !important; /* El recorte lo hace el padre ahora */
     transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-[class*="_range_"], [class*="nativeRangeContainer"]::after {
-    display: none !important;
-}
-
+/* 3. PUNTO VERDE (KNOB) - Ahora visible */
 [class*='_knob_'] {
-    width: 12px !important;
-    height: 12px !important;
+    width: 14px !important;
+    height: 14px !important;
     position: absolute !important;
-    top: 2px !important; 
-    transform: translateX(-50%) !important;
+    top: 0 !important; /* Lo pegamos al borde superior exacto */
+    transform: translate(-50%, -50%) !important;
     background-color: var(--wave-color-solid-accent-fill) !important;
     border-radius: 50% !important;
-    z-index: 80 !important;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5) !important;
+    z-index: 1100 !important; /* Por encima de todo */
+    box-shadow: 0 0 8px rgba(0,0,0,0.6) !important;
+    pointer-events: none !important;
 }
 
-/* 4. TIEMPOS Y TOOLTIP */
+/* 4. CONTROLES Y BOTONES */
+[data-test="left-column-footer-player"],
+[data-test="play-controls"],
+[data-test="footer-player"] > div:last-child {
+    z-index: 50 !important; 
+    position: relative !important;
+}
+
+/* 5. TIEMPOS Y TOOLTIP */
 #progressBar > div > [class*="toolTip"] {
-    bottom: 110% !important;
+    bottom: 25px !important; /* Bajado para que no vuele tanto */
     transform: translateX(-50%) !important;
     background-color: var(--bg-solid) !important;
     color: white !important;
     border: var(--border) !important;
-    padding: 4px 8px !important;
-    z-index: 1100 !important;
+    padding: 2px 8px !important;
+    z-index: 1200 !important;
 }
 
 [class*="_progress_"] > [data-test="current-time"] {
@@ -608,7 +607,6 @@ input[class*="_nativeRange"]::-webkit-slider-thumb {
     transform: translateX(-85px) !important; 
     top: 65px !important;
     color: var(--accent) !important;
-    font-weight: bold !important;
 }
 
 [class*="_progress_"] > [data-test="duration"] {
@@ -616,25 +614,23 @@ input[class*="_nativeRange"]::-webkit-slider-thumb {
     right: 50% !important;
     transform: translateX(85px) !important; 
     top: 65px !important;
-    opacity: 0.8 !important;
 }
 
-/* 5. IMAGEN Y DETALLES */
-[class*="imageryContainer"] {
-    height: 64px !important;
-    border-radius: 8px !important;
-    scale: 1.3 !important;
-}
-
-[class*="currentMediaItemDetails"] {
-    margin-left: 15px !important;
-}
-
-/* Desactivar bloqueos de Tidal */
-[data-test="interaction-layer"] {
+/* Limpieza de basura de Tidal */
+[data-test="interaction-layer"], 
+[class*="_range_"], 
+[class*="nativeRangeContainer"]::after {
     display: none !important;
 }
 
+[class*="nativeRangeContainer"] {
+    border: none !important;
+    transform: none !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
 /* =========================================================
    NOW PLAYING
    ========================================================= */
