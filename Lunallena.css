@@ -548,7 +548,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     position: absolute;
     top: 0; left: 0;
     width: 100%;
-    height: 100%;
+    height: 18px !important;
     margin: 0; padding: 0;
     z-index: 0;
     pointer-events: none !important;
@@ -568,7 +568,7 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 }
 
 [data-test="interaction-layer"] {
-    height: 100% !important;               /* FIX: era 45px, ahora cubre todo */
+    height: 20px !important;                /* FIX: era 45px, ahora cubre todo */
     width: 100%;
     position: absolute;
     top: 0; left: 0;
