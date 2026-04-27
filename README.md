@@ -1,4 +1,4 @@
-# Lunallena 🌕
+# Lunallena - Fixed 
 
 "Full moon" Experience for Tidal (web and desktop app).
 A minimalist, immersive, and elegant interface.
