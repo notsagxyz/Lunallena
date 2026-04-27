@@ -521,17 +521,15 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
     backdrop-filter: var(--blur);
     border-radius: 20px;
     border: var(--border);
-    overflow: hidden !important; 
-    isolation: isolate; /* Fuerza el recorte perfecto de las esquinas */
+    overflow: visible !important;          /* FIX: era hidden, cortaba el knob */
+    clip-path: inset(0 round 20px);        /* FIX: recorta el fondo sin cortar el knob */
+    isolation: isolate;
 }
 
 [data-test="footer-player"]::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     border: var(--border);
     border-bottom: none;
     border-radius: inherit;
@@ -541,19 +539,17 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 [data-test="left-column-footer-player"],
 [data-test="play-controls"],
 [data-test="footer-player"] > div:last-child {
-    z-index: 30 !important; 
+    z-index: 30 !important;
     position: relative;
     pointer-events: auto;
 }
 
 [aria-label="Progress bar"] {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     z-index: 0;
     pointer-events: none !important;
 }
@@ -567,18 +563,17 @@ div[data-test="query-suggestions"] div[class*="_icon_"] {
 [data-test="progress-indicator"] {
     height: 100% !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 20px !important; /* Suaviza el borde interno */
+    border-radius: 20px !important;
     transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 [data-test="interaction-layer"] {
-    height: 45px;          /* Reducimos el alto de la zona de click */
+    height: 100% !important;               /* FIX: era 45px, ahora cubre todo */
     width: 100%;
     position: absolute;
-    top: 0;                /* La pegamos al borde superior */
-    left: 0;
-    pointer-events: auto !important; /* Fuerza a que reciba el click */
-    z-index: 100;          /* Lo ponemos arriba de todo lo demás */
+    top: 0; left: 0;
+    pointer-events: auto !important;
+    z-index: 100;
     cursor: pointer;
     background: transparent;
 }
@@ -664,13 +659,13 @@ button[aria-label="Play queue"] {
     width: 14px;
     height: 14px;
     position: absolute;
-    top: 0 !important;
+    top: 50% !important;                   /* FIX: centrado vertical real */
     transform: translateY(-50%);
     background-color: var(--wave-color-solid-accent-fill);
     border-radius: 50%;
     z-index: 30;
-    outline: 15px solid transparent;
-    pointer-events: none; /* <--- IMPORTANTE: El punto deja de estorbar al click */
+    outline: none;                         /* FIX: outline causaba desborde */
+    pointer-events: none;
 }
 
 [class*="nativeRangeContainer"] {
